@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link crossorigin href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Lexend:wght@400;700&family=Noto+Sans:wght@400;700" onload="this.rel='stylesheet'" rel="preload"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <title>Lectura Crítica - Nivel 1</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      :root { --primary-color: #135bec; }
+      body { min-height: 100dvh; }
+      .option { display: block; margin: 8px 0; padding: 12px 16px; border-radius: 8px; background: #222633; color: #fff; cursor: pointer; border: 2px solid transparent; transition: border 0.2s;}
+      .option.selected, .option:hover { border: 2px solid var(--primary-color); background: #193a6a;}
+      .feedback { margin-top: 8px; font-weight: bold; }
+      .feedback.correct { color: #22c55e; }
+      .feedback.incorrect { color: #ef4444; }
+    </style>
+  </head>
+  <body class="bg-[#111318] min-h-screen flex flex-col">
+    <header class="p-4 flex items-center justify-between">
+      <a href="competence-lectura.html" class="text-white flex items-center">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <span class="text-white text-lg font-bold flex-1 text-center">Lectura Crítica - Nivel 1</span>
+      <div class="w-8"></div>
+    </header>
+    <main class="flex-1 p-4 max-w-xs mx-auto flex flex-col gap-4">
+      <div id="question-container"></div>
+      <button id="next-btn" class="bg-[var(--primary-color)] text-white px-8 py-3 rounded-xl text-lg font-bold mt-2 w-full hidden">Siguiente</button>
+    </main>
+    <footer class="sticky bottom-0 z-10">
+      <div class="flex justify-around border-t border-[#282e39] bg-[#1c1f27] px-2 py-2">
+        <a href="dashboard.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9da6b9] p-2 rounded-lg transition-colors hover:bg-white/5">
+          <span class="material-symbols-outlined">home</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Inicio</p>
+        </a>
+        <a href="competence-lectura.html" class="flex flex-1 flex-col items-center justify-end gap-1 rounded-lg text-white bg-[var(--primary-color)] p-2">
+          <span class="material-symbols-outlined">school</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Competencias</p>
+        </a>
+        <a href="competencias.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9da6b9] p-2 rounded-lg transition-colors hover:bg-white/5">
+          <span class="material-symbols-outlined">leaderboard</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Progreso</p>
+        </a>
+        <a href="profile.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9da6b9] p-2 rounded-lg transition-colors hover:bg-white/5">
+          <span class="material-symbols-outlined">person</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Perfil</p>
+        </a>
+      </div>
+    </footer>
+    <script>
+      // 10 preguntas de ejemplo para Lectura Crítica Nivel 1
+      const preguntas = [
+        { question: "¿Cuál es el tema principal del texto?", options: ["La amistad", "La tecnología", "La educación"], correct: 2 },
+        { question: "¿Qué personaje realiza la acción principal?", options: ["Juan", "María", "Pedro"], correct: 0 },
+        { question: "¿Dónde ocurre la historia?", options: ["En la escuela", "En la casa", "En el parque"], correct: 1 },
+        { question: "¿Cuál es el objetivo del autor?", options: ["Informar", "Persuadir", "Entretener"], correct: 0 },
+        { question: "¿Qué significa la palabra 'innovador' en el texto?", options: ["Antiguo", "Nuevo", "Rápido"], correct: 1 },
+        { question: "¿Qué problema se presenta en el texto?", options: ["Falta de recursos", "Conflicto familiar", "Accidente"], correct: 0 },
+        { question: "¿Quién ayuda al protagonista?", options: ["Su amigo", "Su profesor", "Su madre"], correct: 2 },
+        { question: "¿Qué solución se propone?", options: ["Buscar ayuda", "Ignorar el problema", "Esperar"], correct: 0 },
+        { question: "¿Cómo termina la historia?", options: ["Con éxito", "Con fracaso", "Sin solución"], correct: 0 },
+        { question: "¿Qué sentimiento expresa el autor?", options: ["Alegría", "Tristeza", "Miedo"], correct: 1 }
+      ];
+      let idx = 0;
+      const questionContainer = document.getElementById('question-container');
+      const nextBtn = document.getElementById('next-btn');
+      function renderQuestion() {
+        questionContainer.innerHTML = '';
+        nextBtn.style.display = 'none';
+        if (!preguntas[idx]) {
+          questionContainer.innerHTML = '<p class="text-white text-lg font-bold text-center">¡Completaste las preguntas!</p>';
+          return;
+        }
+        const q = preguntas[idx];
+        const qEl = document.createElement('div');
+        qEl.innerHTML = `<p class="text-white text-lg font-bold mb-4">${q.question}</p>`;
+        q.options.forEach((opt, i) => {
+          const optEl = document.createElement('span');
+          optEl.className = 'option';
+          optEl.textContent = opt;
+          optEl.onclick = () => {
+            qEl.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            optEl.classList.add('selected');
+            let feedback = qEl.querySelector('.feedback');
+            if (!feedback) {
+              feedback = document.createElement('div');
+              feedback.className = 'feedback';
+              qEl.appendChild(feedback);
+            }
+            if (i === q.correct) {
+              feedback.textContent = '¡Correcto!';
+              feedback.className = 'feedback correct';
+              nextBtn.style.display = 'block';
+            } else {
+              feedback.textContent = 'Incorrecto. Intenta de nuevo.';
+              feedback.className = 'feedback incorrect';
+              nextBtn.style.display = 'none';
+            }
+          };
+          qEl.appendChild(optEl);
+        });
+        questionContainer.appendChild(qEl);
+      }
+      nextBtn.onclick = () => {
+        idx++;
+        renderQuestion();
+      };
+      renderQuestion();
+    </script>
+  </body>
+</html>
