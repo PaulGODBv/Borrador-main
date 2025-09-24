@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Palette & base styles aligned with competence-detail.html -->
+    <style type="text/tailwindcss">
+      :root {
+        --primary-color: #135bec;
+        --color-background: #111318;
+        --color-surface: #1C1F27;
+        --color-on-surface: #ffffff;
+        --color-on-surface-secondary: #9da6b9;
+        --color-border: #282e39;
+        --color-critical-reading: #2962ff;
+        --color-quantitative-reasoning: #ff6d00;
+        --color-written-communication: #00bfa5;
+        --color-citizen-competencies: #7c4dff;
+      }
+
+      /* small utility sizes consistent with reference */
+      .size-12 { width: 3rem; height: 3rem; }
+      .size-10 { width: 2.5rem; height: 2.5rem; }
+    </style>
+
+    <style>
+      /* ensure view fills screen like reference */
+      body { min-height: max(884px, 100dvh); }
+    </style>
+    <title>Reta2 — Competencias</title>
+  </head>
+
+  <body class="bg-[var(--color-background)] text-[var(--color-on-surface)]" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
+    <div class="relative flex size-full min-h-screen flex-col justify-between overflow-x-hidden">
+      <div class="flex flex-col flex-1">
+        <!-- Header styled like reference -->
+        <header class="flex items-center bg-[var(--color-background)] p-4 justify-between sticky top-0 z-10">
+          <div class="w-16"></div>
+          <h1 class="text-[var(--color-on-surface)] text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Reta2</h1>
+        </header>
+
+        <main class="flex-1 overflow-y-auto p-4 space-y-6">
+          <h2 class="text-[var(--color-on-surface)] text-2xl sm:text-3xl font-bold leading-tight tracking-[-0.015em]">Competencias</h2>
+
+          <div class="grid grid-cols-1 gap-4 text-lg sm:text-xl w-full max-w-none">
+            <!-- Card: Lectura Crítica -->
+            <a href="competence-detail.html?competence=critical-reading"
+               class="flex flex-col gap-4 rounded-xl bg-[var(--color-surface)] p-6 border border-transparent hover:border-[var(--primary-color)] transition-all">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background-color: var(--color-critical-reading)">
+                <span class="material-symbols-outlined text-white text-5xl">auto_stories</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[var(--color-on-surface)] text-lg sm:text-xl font-bold leading-tight">Lectura Crítica</h3>
+                <div class="w-full bg-[#282E39] rounded-full h-3">
+                  <div class="h-3 rounded-full" style="width: 60%; background-color: var(--color-critical-reading)"></div>
+                </div>
+                <p class="text-[var(--color-on-surface-secondary)] text-base font-normal leading-normal">60% Completado</p>
+              </div>
+            </a>
+
+            <!-- Card: Razonamiento Cuantitativo -->
+            <a href="competence-detail.html?competence=quantitative-reasoning"
+               class="flex flex-col gap-4 rounded-xl bg-[var(--color-surface)] p-6 border border-transparent hover:border-[var(--primary-color)] transition-all">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background-color: var(--color-quantitative-reasoning)">
+                <span class="material-symbols-outlined text-white text-5xl">calculate</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[var(--color-on-surface)] text-lg sm:text-xl font-bold leading-tight">Razonamiento Cuantitativo</h3>
+                <div class="w-full bg-[#282E39] rounded-full h-3">
+                  <div class="h-3 rounded-full" style="width: 45%; background-color: var(--color-quantitative-reasoning)"></div>
+                </div>
+                <p class="text-[var(--color-on-surface-secondary)] text-base font-normal leading-normal">45% Completado</p>
+              </div>
+            </a>
+
+            <!-- Card: Comunicación Escrita -->
+            <a href="competence-detail.html?competence=written-communication"
+               class="flex flex-col gap-4 rounded-xl bg-[var(--color-surface)] p-6 border border-transparent hover:border-[var(--primary-color)] transition-all">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background-color: var(--color-written-communication)">
+                <span class="material-symbols-outlined text-white text-5xl">edit_document</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[var(--color-on-surface)] text-lg sm:text-xl font-bold leading-tight">Comunicación Escrita</h3>
+                <div class="w-full bg-[#282E39] rounded-full h-3">
+                  <div class="h-3 rounded-full" style="width: 80%; background-color: var(--color-written-communication)"></div>
+                </div>
+                <p class="text-[var(--color-on-surface-secondary)] text-base font-normal leading-normal">80% Completado</p>
+              </div>
+            </a>
+
+            <!-- Card: Competencias Ciudadanas -->
+            <a href="competence-detail.html?competence=citizen-competencies"
+               class="flex flex-col gap-4 rounded-xl bg-[var(--color-surface)] p-6 border border-transparent hover:border-[var(--primary-color)] transition-all">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background-color: var(--color-citizen-competencies)">
+                <span class="material-symbols-outlined text-white text-5xl">groups</span>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h3 class="text-[var(--color-on-surface)] text-lg sm:text-xl font-bold leading-tight">Competencias Ciudadanas</h3>
+                <div class="w-full bg-[#282E39] rounded-full h-3">
+                  <div class="h-3 rounded-full" style="width: 25%; background-color: var(--color-citizen-competencies)"></div>
+                </div>
+                <p class="text-[var(--color-on-surface-secondary)] text-base font-normal leading-normal">25% Completado</p>
+              </div>
+            </a>
+          </div>
+        </main>
+      </div>
+
+    <footer class="sticky bottom-0 z-10">
+      <nav class="flex justify-around border-t border-[var(--color-border)] bg-[var(--color-surface)] px-2 py-2">
+        <!-- Inicio -->
+        <a href="dashboard.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--color-on-surface-secondary)] p-2 rounded-lg transition-colors hover:bg-white/5">
+          <span class="material-symbols-outlined">home</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Inicio</p>
+        </a>
+
+        <!-- Competencias (ahora desactivado/gris) -->
+        <a href="competence-detail.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--color-on-surface-secondary)] p-2 rounded-lg transition-colors hover:bg-white/5">
+          <span class="material-symbols-outlined">school</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Competencias</p>
+        </a>
+
+        <!-- Progreso (activo en azul) -->
+        <a href="competencias.html" class="flex flex-1 flex-col items-center justify-end gap-1 rounded-lg text-white bg-[var(--primary-color)] p-2">
+          <span class="material-symbols-outlined">leaderboard</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Progreso</p>
+        </a>
+
+        <!-- Perfil -->
+        <a href="profile.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[var(--color-on-surface-secondary)] p-2 rounded-lg transition-colors hover:bg-white/5">
+          <span class="material-symbols-outlined">person</span>
+          <p class="text-xs font-medium leading-normal tracking-[0.015em]">Perfil</p>
+        </a>
+      </nav>
+    </footer>
+
+    </div>
+  </body>
+</html>

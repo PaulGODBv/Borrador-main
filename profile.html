@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link crossorigin href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Space+Grotesk:wght@400;500;700;900&family=Noto+Sans:wght@400;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <title>Reta2 — Perfil</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <style type="text/tailwindcss">
+      :root{
+        --primary-color: #135bec;
+        --color-background: #111318;
+        --color-surface: #1C1F27;
+        --color-on-surface: #ffffff;
+        --color-on-surface-secondary: #9da6b9;
+        --color-border: #282e39;
+        --color-critical-reading: #2962ff;
+        --color-quantitative-reasoning: #ff6d00;
+        --color-written-communication: #00bfa5;
+        --color-citizen-competencies: #7c4dff;
+      }
+
+      /* layout */
+      html,body { height: 100%; }
+      body { min-height: max(884px,100dvh); background: var(--color-background); color: var(--color-on-surface); font-family:"Space Grotesk","Noto Sans",sans-serif; }
+
+      /* header */
+      header { background: transparent; }
+
+      /* avatar */
+      .avatar {
+        width: 112px;
+        height: 112px;
+        border-radius: 9999px;
+        background: var(--color-surface);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        box-shadow: 0 1px 0 rgba(255,255,255,0.02);
+      }
+
+      /* progress list */
+      .progress-row { margin-bottom: 14px; }
+      .progress-title { display:flex; justify-content:space-between; font-size:0.95rem; color:var(--color-on-surface); margin-bottom:6px; }
+      .progress-track { width:100%; background:#222633; border-radius:10px; height:14px; overflow:hidden; }
+      .progress-fill { height:100%; border-radius:10px; text-align:center; font-size:12px; color: #fff; display:flex; align-items:center; justify-content:flex-end; padding-right:6px; white-space:nowrap; }
+
+      /* container sizing */
+      main { padding-bottom: 92px; } /* leave space for fixed nav */
+      .container { max-width: 480px; margin: 0 auto; width: 100%; padding: 0 16px; }
+
+      /* footer nav (consistent with other pages) */
+      nav.bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: var(--color-surface);
+        border-top: 1px solid var(--color-border);
+        display:flex;
+        justify-content:space-around;
+        padding:8px 0;
+        z-index: 40;
+      }
+      .nav-item { flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; padding:8px; color:var(--color-on-surface-secondary); text-decoration:none; border-radius:10px; transition: background .12s ease; }
+      .nav-item:hover { background: rgba(255,255,255,0.02); }
+      .nav-item.active { background: var(--primary-color); color: white; box-shadow: 0 6px 18px rgba(19,91,236,0.12); }
+      .nav-item .material-symbols-outlined { font-size: 22px; }
+
+      /* small screens spacing */
+      @media(min-width:768px){
+        .container { padding: 0 24px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="p-4 flex items-center justify-between">
+      <a href="dashboard.html" class="text-white flex items-center">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <span class="text-white text-lg font-bold flex-1 text-center">Perfil</span>
+      <div class="w-8"></div>
+    </header>
+
+    <main class="flex-1 flex items-start justify-center p-4">
+      <div class="container">
+        <div class="flex flex-col items-center mb-4">
+          <div class="avatar mb-4">
+            <span class="material-symbols-outlined text-6xl text-white">person</span>
+          </div>
+          <p id="profile-name" class="text-white text-xl font-bold"></p>
+        </div>
+
+        <section>
+          <h3 class="text-white text-lg font-bold mb-3">Progreso por competencia</h3>
+
+          <div id="progress-container" aria-live="polite">
+            <!-- progress rows appended by script -->
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer: Progreso activo (azul), Inicio y Competencias y Perfil inactivos -->
+    <nav class="bottom-nav" role="navigation" aria-label="Navegación principal">
+      <a href="dashboard.html" class="nav-item" aria-current="false">
+        <span class="material-symbols-outlined">home</span>
+        <span class="text-xs">Inicio</span>
+      </a>
+
+      <a href="competence-detail.html" class="nav-item" aria-current="false">
+        <span class="material-symbols-outlined">school</span>
+        <span class="text-xs">Competencias</span>
+      </a>
+
+      <a href="competencias.html" class="nav-item" aria-current="false">
+        <span class="material-symbols-outlined">leaderboard</span>
+        <span class="text-xs">Progreso</span>
+      </a>
+
+      <a href="profile.html" class="nav-item active" aria-current="false">
+        <span class="material-symbols-outlined">person</span>
+        <span class="text-xs">Perfil</span>
+      </a>
+    </nav>
+
+    <script>
+      // nombre del usuario
+      document.getElementById('profile-name').textContent = localStorage.getItem('userName') || '';
+
+      // datos de ejemplo (mantengo tu estructura)
+      const competencias = [
+        { nombre: "Lectura Crítica", progreso: 60, color: getComputedStyle(document.documentElement).getPropertyValue('--color-critical-reading') || '#2962ff' },
+        { nombre: "Razonamiento Cuantitativo", progreso: 45, color: getComputedStyle(document.documentElement).getPropertyValue('--color-quantitative-reasoning') || '#ff6d00' },
+        { nombre: "Comunicación Escrita", progreso: 80, color: getComputedStyle(document.documentElement).getPropertyValue('--color-written-communication') || '#00bfa5' },
+        { nombre: "Competencia Ciudadana", progreso: 25, color: getComputedStyle(document.documentElement).getPropertyValue('--color-citizen-competencies') || '#7c4dff' }
+      ];
+
+      const progressContainer = document.getElementById('progress-container');
+
+      competencias.forEach(c => {
+        // row
+        const row = document.createElement('div');
+        row.className = 'progress-row';
+
+        // title + percent
+        const title = document.createElement('div');
+        title.className = 'progress-title';
+        const nameSpan = document.createElement('span');
+        nameSpan.textContent = c.nombre;
+        const percentSpan = document.createElement('span');
+        percentSpan.textContent = `${c.progreso}%`;
+        title.appendChild(nameSpan);
+        title.appendChild(percentSpan);
+
+        // track + fill
+        const track = document.createElement('div');
+        track.className = 'progress-track';
+        const fill = document.createElement('div');
+        fill.className = 'progress-fill';
+        fill.style.width = `${c.progreso}%`;
+        // use specific color for each competence; if 0% keep it visible but thin (no color block)
+        fill.style.background = (c.progreso > 0) ? c.color.trim() : 'transparent';
+        // show percent inside fill only if enough width
+        if (c.progreso >= 18) {
+          fill.textContent = `${c.progreso}%`;
+          fill.style.justifyContent = 'flex-end';
+        } else {
+          // small visual indicator for 0%: subtle inner dot
+          if (c.progreso === 0) {
+            const dot = document.createElement('div');
+            dot.style.width = '8px';
+            dot.style.height = '8px';
+            dot.style.borderRadius = '50%';
+            dot.style.background = '#3b4354';
+            dot.style.margin = '3px';
+            dot.style.float = 'right';
+            fill.appendChild(dot);
+          }
+        }
+
+        track.appendChild(fill);
+
+        row.appendChild(title);
+        row.appendChild(track);
+        progressContainer.appendChild(row);
+      });
+    </script>
+  </body>
+</html>

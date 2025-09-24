@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Reta2 - Login</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root {
+          --primary-color: #3865e0;
+          --secondary-color: #292e38;
+          --background-color: #111714;
+          --text-primary: #ffffff;
+          --text-secondary: #9eb7a8;
+        }
+        body {
+          font-family: 'Spline Sans', sans-serif;
+        }
+    </style>
+    <style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="bg-[var(--background-color)] text-[var(--text-primary)]">
+    <div class="flex flex-col min-h-screen justify-between p-6">
+        <div class="flex-grow flex flex-col items-center justify-center text-center">
+            <div class="mb-12">
+                <div class="w-48 h-24 bg-gray-700 rounded-lg flex items-center justify-center mx-auto">
+                    <span class="text-gray-400 text-lg font-bold">RETA2</span>
+                </div>
+                <h1 class="text-white text-2xl font-bold mt-4">Bienvenido a Reta2</h1>
+                <p class="text-gray-400 mt-2">Preparación para Saber Pro</p>
+            </div>
+            
+            <div class="w-full max-w-sm space-y-6">
+                <div>
+                    <input type="text" id="name-input" placeholder="Ingresa tu nombre" 
+                           class="w-full bg-[var(--secondary-color)] text-white px-4 py-3 rounded-lg text-center text-lg">
+                </div>
+                
+                <button id="enter-btn" class="w-full bg-[var(--primary-color)] text-white font-bold py-4 px-6 rounded-full transition-transform hover:scale-105">
+                    <span>Empezar</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="text-center text-xs text-[var(--text-secondary)]">
+            <a class="underline hover:text-[var(--primary-color)]" href="#">Términos de Servicio</a> | 
+            <a class="underline hover:text-[var(--primary-color)]" href="#">Política de Privacidad</a> | 
+            <a class="underline hover:text-[var(--primary-color)]" href="#">Contacto</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('enter-btn').addEventListener('click', function() {
+            const name = document.getElementById('name-input').value.trim();
+            
+            if (!name) {
+                alert('Por favor ingresa tu nombre');
+                return;
+            }
+            
+            // Guardar nombre y redirigir al dashboard
+            localStorage.setItem('userName', name);
+            window.location.href = 'dashboard.html';
+        });
+
+        // Permitir entrar con Enter
+        document.getElementById('name-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('enter-btn').click();
+            }
+        });
+    </script>
+</body>
+</html>

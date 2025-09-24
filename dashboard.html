@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link crossorigin href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Space+Grotesk:wght@400;500;700;900&family=Noto+Sans:wght@400;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <title>Reta2 — Inicio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Paleta y variables -->
+    <style type="text/tailwindcss">
+      :root{
+        --primary-color: #135bec;
+        --color-background: #111318;
+        --color-surface: #1c1f27;
+        --color-on-surface: #ffffff;
+        --color-on-surface-secondary: #9da6b9;
+        --color-border: #282e39;
+      }
+      /* tamaño de las imágenes en las tarjetas (coincide con primer código) */
+      .card-img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; display:block; margin:0 auto 6px; }
+    </style>
+
+    <style>
+      body { min-height: max(884px,100dvh); font-family: "Space Grotesk","Noto Sans",sans-serif; background: var(--color-background); color: var(--color-on-surface); }
+      main { padding-bottom: 92px; } /* espacio para nav fija */
+      /* restricción de anchura para que cuadritos no estén gigantes */
+      .cards-wrapper { max-width: 420px; margin: 0 auto; }
+      /* aseguro que las imágenes no rompan layout en móviles */
+      .cards-wrapper img { display:block; }
+    </style>
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <!-- Header -->
+    <header class="p-4 flex items-center justify-between bg-[var(--color-background)] sticky top-0 z-20">
+      <div>
+        <h1 class="text-[var(--color-on-surface)] text-lg font-bold leading-tight">Hola, <span id="user-name">Usuario</span></h1>
+      </div>
+      <a href="login.html" class="rounded-full bg-[var(--color-surface)] p-2 shadow-sm hover:bg-white/5 transition-colors">
+        <span class="material-symbols-outlined text-white text-2xl">logout</span>
+      </a>
+    </header>
+
+    <!-- Main: cuadrícula 2x2 de tarjetas pequeñas (como tu primer código) -->
+    <main class="flex-1 p-4 w-full">
+      <div class="cards-wrapper mx-auto">
+        <div class="grid grid-cols-2 gap-4 mt-4">
+          <a href="competence-detail.html?competence=critical-reading" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/LecCritic.png" alt="Lectura Crítica" class="card-img" />
+            <p class="mt-1 font-medium">Lectura Crítica</p>
+          </a>
+
+          <a href="competence-detail.html?competence=quantitative-reasoning" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/RazonamientoC.png" alt="Razonamiento Cuantitativo" class="card-img" />
+            <p class="mt-1 font-medium">Razonamiento Cuantitativo</p>
+          </a>
+
+          <a href="competence-detail.html?competence=written-communication" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/ComunicacionE.jpg" alt="Comunicación Escrita" class="card-img" />
+            <p class="mt-1 font-medium">Comunicación Escrita</p>
+          </a>
+
+          <a href="competence-detail.html?competence=citizen-competencies" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/CityComp.png" alt="Competencias Ciudadanas" class="card-img" />
+            <p class="mt-1 font-medium">Competencias Ciudadanas</p>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer: Inicio activo (azul). Competencias y Perfil inactivos. NO hay Progreso -->
+    <nav class="fixed bottom-0 left-0 w-full bg-[var(--color-surface)] border-t border-[var(--color-border)] flex justify-around py-2 z-30">
+      <!-- Inicio (ACTIVO) -->
+      <a href="dashboard.html" class="flex-1 flex flex-col items-center gap-1 p-2 bg-[var(--primary-color)] text-white rounded-lg shadow-md">
+        <span class="material-symbols-outlined text-2xl">home</span>
+        <span class="text-xs">Inicio</span>
+      </a>
+
+      <!-- Competencias (inactivo, gris) -->
+      <a href="competence-detail.html" class="flex-1 flex flex-col items-center gap-1 p-2 text-[var(--color-on-surface-secondary)] hover:bg-white/5 rounded-lg transition-colors">
+        <span class="material-symbols-outlined text-2xl">school</span>
+        <span class="text-xs">Competencias</span>
+      </a>
+
+      <a href="competencias.html" class="flex-1 flex flex-col items-center gap-1 p-2 text-[var(--color-on-surface-secondary)] hover:bg-white/5 rounded-lg transition-colors">
+        <span class="material-symbols-outlined text-2xl">leaderboard</span>
+        <span class="text-xs">Progreso</span>
+      </a> 
+
+      <!-- Perfil (inactivo, gris) -->
+      <a href="profile.html" class="flex-1 flex flex-col items-center gap-1 p-2 text-[var(--color-on-surface-secondary)] hover:bg-white/5 rounded-lg transition-colors">
+        <span class="material-symbols-outlined text-2xl">person</span>
+        <span class="text-xs">Perfil</span>
+      </a>
+    </nav>
+
+    <script>
+      // mantener nombre de usuario
+      document.getElementById('user-name').textContent = localStorage.getItem('userName') || 'Usuario';
+    </script>
+  </body>
+</html>
