@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Competencia Ciudadana - Nivel 1</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+      :root { --primary-color: #135bec; }
+      body { min-height: 100dvh; }
+      .option { display: block; margin: 8px 0; padding: 12px 16px; border-radius: 8px; background: #222633; color: #fff; cursor: pointer; border: 2px solid transparent; transition: border 0.2s;}
+      .option.selected, .option:hover { border: 2px solid var(--primary-color); background: #193a6a;}
+      .feedback { margin-top: 8px; font-weight: bold; }
+      .feedback.correct { color: #22c55e; }
+      .feedback.incorrect { color: #ef4444; }
+    </style>
+  </head>
+  <body class="bg-[#111318] min-h-screen flex flex-col">
+    <header class="p-4 flex items-center justify-between">
+      <a href="competence-ciudadana.html" class="text-white flex items-center">
+        <span class="material-symbols-outlined">arrow_back</span>
+      </a>
+      <span class="text-white text-lg font-bold flex-1 text-center">Competencia Ciudadana - Nivel 1</span>
+      <div class="w-8"></div>
+    </header>
+    <main class="flex-1 p-4 max-w-xs mx-auto flex flex-col gap-4">
+      <div id="question-container"></div>
+      <button id="next-btn" class="bg-[var(--primary-color)] text-white px-8 py-3 rounded-xl text-lg font-bold mt-2 w-full hidden">Siguiente</button>
+    </main>
+    <script>
+      const preguntas = [
+        { question: "¿Qué es la democracia?", options: ["Gobierno del pueblo", "Gobierno de unos pocos", "Ausencia de gobierno"], correct: 0 },
+        { question: "¿Qué derecho protege la libertad de expresión?", options: ["Derecho civil", "Derecho penal", "Derecho laboral"], correct: 0 },
+        { question: "¿Qué valor fomenta la convivencia?", options: ["Respeto", "Egoísmo", "Indiferencia"], correct: 0 },
+        { question: "¿Qué institución defiende los derechos humanos?", options: ["ONU", "Banco Mundial", "FIFA"], correct: 0 },
+        { question: "¿Qué significa ciudadanía?", options: ["Pertenencia a una comunidad", "Ser turista", "Ser extranjero"], correct: 0 },
+        { question: "¿Qué acción promueve la participación ciudadana?", options: ["Votar", "Ignorar", "Evitar"], correct: 0 },
+        { question: "¿Qué valor es esencial en una sociedad democrática?", options: ["Tolerancia", "Violencia", "Desigualdad"], correct: 0 },
+        { question: "¿Qué derecho tienen los niños?", options: ["Educación", "Trabajo", "Votar"], correct: 0 },
+        { question: "¿Qué significa igualdad?", options: ["Mismos derechos", "Diferentes derechos", "Sin derechos"], correct: 0 },
+        { question: "¿Qué promueve el respeto a la ley?", options: ["Orden social", "Desorden", "Conflicto"], correct: 0 }
+      ];
+      let idx = 0;
+      const questionContainer = document.getElementById('question-container');
+      const nextBtn = document.getElementById('next-btn');
+      function renderQuestion() {
+        questionContainer.innerHTML = '';
+        nextBtn.style.display = 'none';
+        if (!preguntas[idx]) {
+          questionContainer.innerHTML = '<p class="text-white text-lg font-bold text-center">¡Completaste las preguntas!</p>';
+          return;
+        }
+        const q = preguntas[idx];
+        const qEl = document.createElement('div');
+        qEl.innerHTML = `<p class="text-white text-lg font-bold mb-4">${q.question}</p>`;
+        q.options.forEach((opt, i) => {
+          const optEl = document.createElement('span');
+          optEl.className = 'option';
+          optEl.textContent = opt;
+          optEl.onclick = () => {
+            qEl.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+            optEl.classList.add('selected');
+            let feedback = qEl.querySelector('.feedback');
+            if (!feedback) {
+              feedback = document.createElement('div');
+              feedback.className = 'feedback';
+              qEl.appendChild(feedback);
+            }
+            if (i === q.correct) {
+              feedback.textContent = '¡Correcto!';
+              feedback.className = 'feedback correct';
+              nextBtn.style.display = 'block';
+            } else {
+              feedback.textContent = 'Incorrecto. Intenta de nuevo.';
+              feedback.className = 'feedback incorrect';
+              nextBtn.style.display = 'none';
+            }
+          };
+          qEl.appendChild(optEl);
+        });
+        questionContainer.appendChild(qEl);
+      }
+      nextBtn.onclick = () => {
+        idx++;
+        renderQuestion();
+      };
+      renderQuestion();
+    </script>
+  </body>
+</html>
