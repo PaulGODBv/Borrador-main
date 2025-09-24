@@ -1,159 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
-    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link crossorigin href="https://fonts.gstatic.com/" rel="preconnect"/>
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Space+Grotesk:wght@400;500;700;900&family=Noto+Sans:wght@400;700" onload="this.rel='stylesheet'" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-    <title>Reta2</title>
-    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+    <title>Reta2 — Inicio</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
-      :root {
+      :root{
         --primary-color: #135bec;
+        --color-background: #111318;
+        --color-surface: #1c1f27;
+        --color-on-surface: #ffffff;
+        --color-on-surface-secondary: #9da6b9;
+        --color-border: #282e39;
       }
+      .card-img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; display:block; margin:0 auto 6px; }
     </style>
     <style>
-      body {
-        min-height: max(884px, 100dvh);
-      }
+      body { min-height: max(884px,100dvh); font-family: "Space Grotesk","Noto Sans",sans-serif; background: var(--color-background); color: var(--color-on-surface); }
+      main { padding-bottom: 92px; }
+      .cards-wrapper { max-width: 420px; margin: 0 auto; }
+      .cards-wrapper img { display:block; }
     </style>
   </head>
-  <body class="bg-[#111318]">
-    <div class="relative flex size-full min-h-screen flex-col dark justify-between group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="flex-grow">
-        <div class="flex items-center bg-[#111318] p-4 pb-2 justify-between sticky top-0 z-10">
-          <a href="dashboard.html" class="text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
-            <span class="material-symbols-outlined">arrow_back_ios_new</span>
-          </a>
-          <h1 class="text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Razonamiento Cuantitativo</h1>
-        </div>
-        <main class="p-4 space-y-6">
-          <div class="p-5 bg-[#1C1F27] rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Nivel 1</h2>
-              <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-yellow-400">star</span>
-                <span class="material-symbols-outlined text-gray-600">star_border</span>
-                <span class="material-symbols-outlined text-gray-600">star_border</span>
-              </div>
-            </div>
-            <div class="space-y-4">
-              <a href="question-razonamiento-nivel1.html" class="flex items-center gap-4 bg-[#282E39]/60 p-3 rounded-lg hover:bg-[#282E39] transition-colors">
-                <div class="text-white flex items-center justify-center rounded-full bg-[var(--primary-color)] shrink-0 size-12">
-                  <span class="material-symbols-outlined text-3xl">💬</span>
-                </div>
-                <div class="flex-grow">
-                  <p class="text-white text-base font-medium leading-normal line-clamp-1">Relaciones Numéricas</p>
-                  <div class="flex items-center gap-2 mt-1">
-                    <div class="w-full bg-gray-600 rounded-full h-1.5">
-                      <div class="bg-[var(--primary-color)] h-1.5 rounded-full" style="width: 75%"></div>
-                    </div>
-                    <p class="text-[#9DA6B9] text-xs font-normal">75%</p>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <div class="p-5 bg-[#1C1F27] rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Nivel 2</h2>
-              <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-gray-600">lock</span>
-              </div>
-            </div>
-            <div class="space-y-4 opacity-50">
-              <div class="flex items-center gap-4 bg-[#282E39]/60 p-3 rounded-lg">
-                <div class="text-white flex items-center justify-center rounded-full bg-gray-700 shrink-0 size-12">
-                  <span class="material-symbols-outlined text-3xl">📊</span>
-                </div>
-                <div class="flex-grow">
-                  <p class="text-white text-base font-medium leading-normal line-clamp-1">Proporcionalidad</p>
-                  <div class="flex items-center gap-2 mt-1">
-                    <div class="w-full bg-gray-600 rounded-full h-1.5">
-                      <div class="bg-gray-500 h-1.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                    <p class="text-[#9DA6B9] text-xs font-normal">0%</p>
-                  </div>
-                </div>
-              </div>
-              <div class="flex items-center gap-4 bg-[#282E39]/60 p-3 rounded-lg">
-                <div class="text-white flex items-center justify-center rounded-full bg-gray-700 shrink-0 size-12">
-                  <span class="material-symbols-outlined text-3xl">square_foot</span>
-                </div>
-                <div class="flex-grow">
-                  <p class="text-white text-base font-medium leading-normal line-clamp-1">Geometría</p>
-                  <div class="flex items-center gap-2 mt-1">
-                    <div class="w-full bg-gray-600 rounded-full h-1.5">
-                      <div class="bg-gray-500 h-1.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                    <p class="text-[#9DA6B9] text-xs font-normal">0%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="p-5 bg-[#1C1F27] rounded-xl">
-            <div class="flex justify-between items-center mb-4">
-              <h2 class="text-white text-2xl font-bold leading-tight tracking-[-0.015em]">Nivel 3</h2>
-              <div class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-gray-600">lock</span>
-              </div>
-            </div>
-            <div class="space-y-4 opacity-50">
-              <div class="flex items-center gap-4 bg-[#282E39]/60 p-3 rounded-lg">
-                <div class="text-white flex items-center justify-center rounded-full bg-gray-700 shrink-0 size-12">
-                  <span class="material-symbols-outlined text-3xl">monitoring</span>
-                </div>
-                <div class="flex-grow">
-                  <p class="text-white text-base font-medium leading-normal line-clamp-1">Estadística</p>
-                  <div class="flex items-center gap-2 mt-1">
-                    <div class="w-full bg-gray-600 rounded-full h-1.5">
-                      <div class="bg-gray-500 h-1.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                    <p class="text-[#9DA6B9] text-xs font-normal">0%</p>
-                  </div>
-                </div>
-              </div>
-              <div class="flex items-center gap-4 bg-[#282E39]/60 p-3 rounded-lg">
-                <div class="text-white flex items-center justify-center rounded-full bg-gray-700 shrink-0 size-12">
-                  <span class="material-symbols-outlined text-3xl">casino</span>
-                </div>
-                <div class="flex-grow">
-                  <p class="text-white text-base font-medium leading-normal line-clamp-1">Probabilidad</p>
-                  <div class="flex items-center gap-2 mt-1">
-                    <div class="w-full bg-gray-600 rounded-full h-1.5">
-                      <div class="bg-gray-500 h-1.5 rounded-full" style="width: 0%"></div>
-                    </div>
-                    <p class="text-[#9DA6B9] text-xs font-normal">0%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
+  <body class="flex flex-col min-h-screen">
+    <header class="p-4 flex items-center justify-between bg-[var(--color-background)] sticky top-0 z-20">
+      <div>
+        <h1 class="text-[var(--color-on-surface)] text-lg font-bold leading-tight">Hola, <span id="user-name">Usuario</span> ¿Que competencia practicaremos hoy?</h1>
       </div>
-      <footer class="sticky bottom-0 z-10">
-        <div class="flex justify-around border-t border-[#282e39] bg-[#1c1f27] px-2 py-2">
-          <a href="dashboard.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9da6b9] p-2 rounded-lg transition-colors hover:bg-white/5">
-            <span class="material-symbols-outlined">home</span>
-            <p class="text-xs font-medium leading-normal tracking-[0.015em]">Inicio</p>
+      <a href="login.html" class="rounded-full bg-[var(--color-surface)] p-2 shadow-sm hover:bg-white/5 transition-colors">
+        <span class="material-symbols-outlined text-white text-2xl">logout</span>
+      </a>
+    </header>
+    <main class="flex-1 p-4 w-full">
+      <div class="cards-wrapper mx-auto">
+        <div class="grid grid-cols-2 gap-4 mt-4">
+          <a href="competence-lectura.html?competence=quantitative-reasoning" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/LecCritic.png" alt="Lectura Crítica" class="card-img" />
+            <p class="mt-1 font-medium">Lectura Crítica</p>
           </a>
-          <a href="competence-detail.html" class="flex flex-1 flex-col items-center justify-end gap-1 rounded-lg text-white bg-[var(--primary-color)] p-2">
-            <span class="material-symbols-outlined">school</span>
-            <p class="text-xs font-medium leading-normal tracking-[0.015em]">Competencias</p>
+          <a href="competence-razonamiento.html" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/RazonamientoC.png" alt="Razonamiento Cuantitativo" class="card-img" />
+            <p class="mt-1 font-medium">Razonamiento Cuantitativo</p>
           </a>
-          <a href="competencias.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9da6b9] p-2 rounded-lg transition-colors hover:bg-white/5">
-            <span class="material-symbols-outlined">leaderboard</span>
-            <p class="text-xs font-medium leading-normal tracking-[0.015em]">Progreso</p>
+          <a href="competence-competencia.html" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/ComunicacionE.jpg" alt="Comunicación Escrita" class="card-img" />
+            <p class="mt-1 font-medium">Comunicación Escrita</p>
           </a>
-          <a href="profile.html" class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9da6b9] p-2 rounded-lg transition-colors hover:bg-white/5">
-            <span class="material-symbols-outlined">person</span>
-            <p class="text-xs font-medium leading-normal tracking-[0.015em]">Perfil</p>
+          <a href="competence-competencia.html" class="p-4 bg-[var(--color-surface)] rounded-xl text-white text-center hover:bg-[#2a2f3a] transition-colors">
+            <img src="static/CityComp.png" alt="Competencias Ciudadanas" class="card-img" />
+            <p class="mt-1 font-medium">Competencias Ciudadanas</p>
           </a>
         </div>
-      </footer>
-    </div>
+      </div>
+    </main>
+    <nav class="fixed bottom-0 left-0 w-full bg-[var(--color-surface)] border-t border-[var(--color-border)] flex justify-around py-2 z-30">
+      <a href="dashboard.html" class="flex-1 flex flex-col items-center gap-1 p-2 text-[var(--color-on-surface-secondary)] text-white rounded-lg shadow-md">
+        <span class="material-symbols-outlined text-2xl">home</span>
+        <span class="text-xs">Inicio</span>
+      </a>
+      <a href="competence-detail.html" class="flex-1 flex flex-col items-center gap-1 p-2 bg-[var(--primary-color)] text-white rounded-lg shadow-md">
+        <span class="material-symbols-outlined text-2xl">school</span>
+        <span class="text-xs">Competencias</span>
+      </a>
+      <a href="competencias.html" class="flex-1 flex flex-col items-center gap-1 p-2 text-[var(--color-on-surface-secondary)] hover:bg-white/5 rounded-lg transition-colors">
+        <span class="material-symbols-outlined text-2xl">leaderboard</span>
+        <span class="text-xs">Progreso</span>
+      </a> 
+      <a href="profile.html" class="flex-1 flex flex-col items-center gap-1 p-2 text-[var(--color-on-surface-secondary)] hover:bg-white/5 rounded-lg transition-colors">
+        <span class="material-symbols-outlined text-2xl">person</span>
+        <span class="text-xs">Perfil</span>
+      </a>
+    </nav>
+    <script>
+      document.getElementById('user-name').textContent = localStorage.getItem('userName') || 'Usuario';
+    </script>
   </body>
 </html>
